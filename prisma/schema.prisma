@@ -16,4 +16,14 @@ model Gallery {
   userId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Tag       Tag[]
+}
+
+model Tag {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  galleryId String   @db.ObjectId
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Gallery   Gallery  @relation(fields: [galleryId], references: [id])
 }

@@ -42,7 +42,7 @@ const SettingsForm:React.FC<SettingsFormProps> = ({ initialData }) => {
   const onSubmit = async (data: SettingsFormValues) => {
     try {
       setLoading(true);
-      await axios.patch(`/api/gallery/${params.galleryId}`, data);
+      await axios.patch(`/api/${params.galleryId}`, data);
       router.refresh();
       toast.success('Gallery Updated Successfully.');
     } catch (err) {
@@ -55,7 +55,7 @@ const SettingsForm:React.FC<SettingsFormProps> = ({ initialData }) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/gallery/${params.galleryId}`);
+      await axios.delete(`/api/${params.galleryId}`);
       router.refresh();
       router.push('/');
       toast.success('Gallery Deleted Successfully');
