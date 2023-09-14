@@ -23,6 +23,11 @@ const MainNavigation = ({
       active: pathName === `/${params.galleryId}/tags`,
     },
     {
+      href: `/${params.galleryId}/images`,
+      label: 'Images',
+      active: pathName === `/${params.galleryId}/images`,
+    },
+    {
       href: `/${params.galleryId}/settings`,
       label: 'Settings',
       active: pathName === `/${params.galleryId}/settings`,

@@ -65,3 +65,24 @@ export async function DELETE (req: Request, { params }: {
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
+
+export async function GET (req: Request, { params }: {
+  params: { galleryId : string}
+}) {
+  try {
+    
+    if (!params.galleryId) {
+      return new NextResponse('Gallery ID is Required', { status: 400 });
+    }
+    
+    const gallery = await prismadb.gallery.findUnique({
+      where: {
+        id: params.galleryId,
+      }
+    });
+    return NextResponse.json(gallery);
+  } catch (error) {
+    console.log('[GALLERY_DELETE]: ', error);
+    return new NextResponse("Internal Server Error", { status: 500 });
+  }
+}
